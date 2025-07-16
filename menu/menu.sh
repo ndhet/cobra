@@ -74,7 +74,7 @@ tmon="$(vnstat -i eth0 -m | grep "`date +"%b '%y"`" | awk '{print $9" "substr ($
 cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
 cpu_usage="$((${cpu_usage1/\.*} / ${corediilik:-1}))"
 cpu_usage+=" %"
-ISP=$(curl -s ipinfo.io/org?token=7578ac19afd785 | cut -d " " -f 2-10 )
+ISP=$(curl -s ipinfo.io/org?token=7578ac19afd785 )
 CITY=$(curl -s ipinfo.io/city?token=7578ac19afd785 )
 WKT=$(curl -s ipinfo.io/timezone?token=7578ac19afd785 )
 DAY=$(date +%A)
@@ -87,9 +87,24 @@ freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
 tram=$( free -m | awk 'NR==2 {print $2}' )
 uram=$( free -m | awk 'NR==2 {print $3}' )
 fram=$( free -m | awk 'NR==2 {print $4}' )
+
+ISPSTATUS=$(echo "$ISP" | jq -r '.status')
+if [ "$ISPSTATUS" -eq 429 ]; then
+	ISP="Limit Exceeded"
+else
+	ISP=$(curl -s ipinfo.io/org?token=7578ac19afd785 | cut -d " " -f 2-10 )
+fi
+
+CITYSTATUS=$(echo "$CITY" | jq -r '.status')
+if [ "$CITYSTATUS" -eq 429 ]; then
+	CITY="Limit Exceeded"
+else
+	CITY=$(curl -s ipinfo.io/city?token=7578ac19afd785 )
+fi	
+
 clear 
 echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "                 • SUPREME •                 "
+echo -e "                 • SSHAXOR •                 "
 echo -e "\e[33m ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\e[33m OS            \e[0m:  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`	
 echo -e "\e[33m IP            \e[0m:  $IPVPS"	
