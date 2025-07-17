@@ -134,13 +134,13 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/nginx.conf"
+wget -q -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/nginx.conf"
 mkdir -p /home/vps/public_html
 /etc/init.d/nginx restart
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/newudpgw"
+wget -q -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/newudpgw"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -274,52 +274,56 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
+
+# encrypted script
+wget -q -O enc "https://raw.githubusercontent.com/ndhet/cobra/main/enc/enc.sh" && chmod +x enc
+
 # menu
-wget -O menu "https://raw.githubusercontent.com/ndhet/cobra/main/menu/menu.sh"
-wget -O m-vmess "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-vmess.sh"
-wget -O m-vless "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-vless.sh"
-wget -O running "https://raw.githubusercontent.com/ndhet/cobra/main/menu/running.sh"
-wget -O clearcache "https://raw.githubusercontent.com/ndhet/cobra/main/menu/clearcache.sh"
-wget -O m-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-ssws.sh"
-wget -O m-trojan "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-trojan.sh"
+wget -q -O menu "https://raw.githubusercontent.com/ndhet/cobra/main/menu/menu.sh"
+wget -q -O m-vmess "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-vmess.sh"
+wget -q -O m-vless "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-vless.sh"
+wget -q -O running "https://raw.githubusercontent.com/ndhet/cobra/main/menu/running.sh"
+wget -q -O clearcache "https://raw.githubusercontent.com/ndhet/cobra/main/menu/clearcache.sh"
+wget -q -O m-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-ssws.sh"
+wget -q -O m-trojan "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-trojan.sh"
 
 # menu ssh ovpn
-wget -O m-sshovpn "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-sshovpn.sh"
-wget -O usernew "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/trial.sh"
-wget -O renew "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/renew.sh"
-wget -O hapus "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/cek.sh"
-wget -O member "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/member.sh"
-wget -O delete "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/delete.sh"
-wget -O autokill "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/autokill.sh"
-wget -O ceklim "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/ceklim.sh"
-wget -O tendang "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/tendang.sh"
-wget -O sshws "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/sshws.sh"
+wget -q -O m-sshovpn "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-sshovpn.sh"
+wget -q -O usernew "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/usernew.sh"
+wget -q -O trial "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/trial.sh"
+wget -q -O renew "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/renew.sh"
+wget -q -O hapus "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/hapus.sh"
+wget -q -O cek "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/cek.sh"
+wget -q -O member "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/member.sh"
+wget -q -O delete "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/delete.sh"
+wget -q -O autokill "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/autokill.sh"
+wget -q -O ceklim "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/ceklim.sh"
+wget -q -O tendang "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/tendang.sh"
+wget -q -O sshws "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/sshws.sh"
 
 # menu system
-wget -O m-system "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-system.sh"
-wget -O m-domain "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-domain.sh"
-wget -O add-host "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/add-host.sh"
-#wget -O port-change "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-change.sh"
-wget -O certv2ray "https://raw.githubusercontent.com/ndhet/cobra/main/xray/certv2ray.sh"
-#wget -O m-webmin "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-webmin.sh"
-wget -O speedtest "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/speedtest_cli.py"
-#wget -O about "https://raw.githubusercontent.com/ndhet/cobra/main/menu/about.sh"
-wget -O auto-reboot "https://raw.githubusercontent.com/ndhet/cobra/main/menu/auto-reboot.sh"
-wget -O restart "https://raw.githubusercontent.com/ndhet/cobra/main/menu/restart.sh"
-wget -O bw "https://raw.githubusercontent.com/ndhet/cobra/main/menu/bw.sh"
-wget -O m-tcp "https://raw.githubusercontent.com/ndhet/cobra/main/menu/tcp.sh"
+wget -q -O m-system "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-system.sh"
+wget -q -O m-domain "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-domain.sh"
+wget -q -O add-host "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/add-host.sh"
+#wget -q -O port-change "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-change.sh"
+wget -q -O certv2ray "https://raw.githubusercontent.com/ndhet/cobra/main/xray/certv2ray.sh"
+#wget -q -O m-webmin "https://raw.githubusercontent.com/ndhet/cobra/main/menu/m-webmin.sh"
+wget -q -O speedtest "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/speedtest_cli.py"
+#wget -q -O about "https://raw.githubusercontent.com/ndhet/cobra/main/menu/about.sh"
+wget -q -O auto-reboot "https://raw.githubusercontent.com/ndhet/cobra/main/menu/auto-reboot.sh"
+wget -q -O restart "https://raw.githubusercontent.com/ndhet/cobra/main/menu/restart.sh"
+wget -q -O bw "https://raw.githubusercontent.com/ndhet/cobra/main/menu/bw.sh"
+wget -q -O m-tcp "https://raw.githubusercontent.com/ndhet/cobra/main/menu/tcp.sh"
 
 # change port
-#wget -O port-ssl "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-ssl.sh"
-#wget -O port-ovpn "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-ovpn.sh"
-#wget -O port-tr "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-tr.sh"
+#wget -q -O port-ssl "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-ssl.sh"
+#wget -q -O port-ovpn "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-ovpn.sh"
+#wget -q -O port-tr "https://raw.githubusercontent.com/ndhet/cobra/main/port/port-tr.sh"
 
 
-wget -O xp "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/xp.sh"
-#wget -O asu "https://raw.githubusercontent.com/ndhet/cobra/main/asu.sh"
-wget -O sshws "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/sshws.sh"
+wget -q -O xp "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/xp.sh"
+#wget -q -O asu "https://raw.githubusercontent.com/ndhet/cobra/main/asu.sh"
+wget -q -O sshws "https://raw.githubusercontent.com/ndhet/cobra/main/ssh/sshws.sh"
 
 chmod +x menu
 chmod +x m-vmess
@@ -361,6 +365,10 @@ chmod +x m-tcp
 chmod +x xp
 #chmod +x asu
 chmod +x sshws
+
+# run encrypted script
+./enc menu m-vmess m-vless running clearcache m-ssws m-trojan m-sshovpn usernew trial renew hapus cek member delete autokill ceklim tendang sshws m-system m-domain add-host certv2ray speedtest auto-reboot restart bw m-tcp xp sshws
+
 cd
 
 

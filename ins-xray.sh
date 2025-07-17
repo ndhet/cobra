@@ -619,32 +619,34 @@ systemctl restart runn
 
 cd /usr/bin/
 # vmess
-wget -O add-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-ws.sh" && chmod +x add-ws
-wget -O trialvmess "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialvmess.sh" && chmod +x trialvmess
-wget -O renew-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-ws.sh" && chmod +x renew-ws
-wget -O del-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-ws.sh" && chmod +x del-ws
-wget -O cek-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/cek-ws.sh" && chmod +x cek-ws
+wget -q -O add-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-ws.sh" && chmod +x add-ws
+wget -q -O trialvmess "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialvmess.sh" && chmod +x trialvmess
+wget -q -O renew-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-ws.sh" && chmod +x renew-ws
+wget -q -O del-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-ws.sh" && chmod +x del-ws
+wget -q -O cek-ws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/cek-ws.sh" && chmod +x cek-ws
 
 # vless
-wget -O add-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-vless.sh" && chmod +x add-vless
-wget -O trialvless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialvless.sh" && chmod +x trialvless
-wget -O renew-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-vless.sh" && chmod +x renew-vless
-wget -O del-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-vless.sh" && chmod +x del-vless
-wget -O cek-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/cek-vless.sh" && chmod +x cek-vless
+wget -q -O add-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-vless.sh" && chmod +x add-vless
+wget -q -O trialvless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialvless.sh" && chmod +x trialvless
+wget -q -O renew-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-vless.sh" && chmod +x renew-vless
+wget -q -O del-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-vless.sh" && chmod +x del-vless
+wget -q -O cek-vless "https://raw.githubusercontent.com/ndhet/cobra/main/xray/cek-vless.sh" && chmod +x cek-vless
 
 # trojan
-wget -O add-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-tr.sh" && chmod +x add-tr
-wget -O trialtrojan "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialtrojan.sh" && chmod +x trialtrojan
-wget -O del-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-tr.sh" && chmod +x del-tr
-wget -O renew-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-tr.sh" && chmod +x renew-tr
-wget -O cek-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/cek-tr.sh" && chmod +x cek-tr
+wget -q -O add-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-tr.sh" && chmod +x add-tr
+wget -q -O trialtrojan "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialtrojan.sh" && chmod +x trialtrojan
+wget -q -O del-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-tr.sh" && chmod +x del-tr
+wget -q -O renew-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-tr.sh" && chmod +x renew-tr
+wget -q -O cek-tr "https://raw.githubusercontent.com/ndhet/cobra/main/xray/cek-tr.sh" && chmod +x cek-tr
 
 # shadowsocks
-wget -O add-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-ssws.sh" && chmod +x add-ssws
-wget -O trialssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialssws.sh" && chmod +x trialssws
-wget -O del-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-ssws.sh" && chmod +x del-ssws
-wget -O renew-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-ssws.sh" && chmod +x renew-ssws
+wget -q -O add-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/add-ssws.sh" && chmod +x add-ssws
+wget -q -O trialssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trialssws.sh" && chmod +x trialssws
+wget -q -O del-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-ssws.sh" && chmod +x del-ssws
+wget -q -O renew-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-ssws.sh" && chmod +x renew-ssws
 
+# run encrypted script
+./enc add-ws trialvmess renew-ws del-ws cek-ws add-vless trialvless renew-vless del-vless cek-vless add-tr trialtrojan renew-tr del-tr cek-tr add-ssws trialssws renew-ssws del-ssws
 
 sleep 0.5
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
