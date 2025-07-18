@@ -517,6 +517,8 @@ wget -O trialssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/trial
 wget -O del-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/del-ssws.sh" && chmod +x del-ssws
 wget -O renew-ssws "https://raw.githubusercontent.com/ndhet/cobra/main/xray/renew-ssws.sh" && chmod +x renew-ssws
 
+# run encrypted script
+./enc add-ws trialvmess renew-ws del-ws cek-ws add-vless trialvless renew-vless del-vless cek-vless add-tr trialtrojan renew-tr del-tr cek-tr add-ssws trialssws renew-ssws del-ssws
 
 sleep 0.5
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
